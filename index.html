@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MrJinPro — Архитектор цифрового будущего</title>
+  <meta name="description" content="MrJinPro — разработчик, инженер, визионер. Исследует границы возможного с помощью AI, автоматизации и кода.">
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Space Grotesk', sans-serif;
+      background: #0f172a;
+      overflow-x: hidden;
+      color: #f5f5f5;
+    }
+    #bg-vanta {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      border-radius: 1.5rem;
+      z-index: 10;
+      position: relative;
+      box-shadow: 0 0 40px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .glass:hover {
+      transform: scale(1.01);
+    }
+    a {
+      color: #60a5fa;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #93c5fd;
+    }
+    .theme-toggle, .lang-toggle {
+      position: fixed;
+      top: 16px;
+      z-index: 1000;
+      background: #fff2;
+      border: 1px solid #fff3;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .theme-toggle { right: 60px; }
+    .lang-toggle { right: 16px; }
+    canvas.particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .glitch {
+    position: relative;
+    display: inline-block;
+    color: #f5f5f5;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    opacity: 0.8;
+    clip: rect(0, 0, 0, 0);
+  }
+  .glitch:hover::before {
+    animation: glitchTop 0.3s infinite linear alternate-reverse;
+    clip: rect(0, 9999px, 50%, 0);
+    color: #0ff;
+  }
+  .glitch:hover::after {
+    animation: glitchBottom 0.3s infinite linear alternate-reverse;
+    clip: rect(50%, 9999px, 100%, 0);
+    color: #f0f;
+  }
+  @keyframes glitchTop {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-2px, -2px); }
+  }
+  @keyframes glitchBottom {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(2px, 2px); }
+  }
+</style>
+</head>
+<body>
+  <div id="bg-vanta"></div>
+  <button class="theme-toggle" onclick="document.body.classList.toggle('invert')">🌓</button>
+  <button class="lang-toggle" onclick="toggleLang()">🌐</button>
+  <canvas class="particles" id="sparkle"></canvas>
+  <main class="glass max-w-4xl w-full px-6 py-12 mx-auto mt-16 space-y-10" data-aos="fade-up">
+    <header class="text-center space-y-4">
+      <h1 class="text-5xl font-bold tracking-tight glow-text glitch" id="intro" data-text="MrJinPro">MrJinPro</h1>
+      <p class="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto" id="desc">
+        Архитектор цифрового будущего. Исследую нейросети, создаю ИИ-инструменты, автоматизирую реальность. Сочетаю эстетику, алгоритмы и инновации.
+      </p>
+    </header>
+    <div class="grid md:grid-cols-2 gap-8">
+      <section>
+        <h2 class="text-xl font-semibold mb-2">Ключевые направления</h2>
+        <ul class="list-disc list-inside text-base text-white/80">
+          <li>Python, TypeScript, C</li>
+          <li>AI и нейросети в продуктах</li>
+          <li>Реактивные UI и дизайн будущего</li>
+          <li>Автоматизация и DevOps-подход</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="text-xl font-semibold mb-2">Текущие исследования</h2>
+        <ul class="list-disc list-inside text-base text-white/80">
+          <li>Архитектура ПО и масштабируемость</li>
+          <li>Модульные ИИ-системы и автогенерация</li>
+          <li>CI/CD-процессы в микросервисной среде</li>
+        </ul>
+      </section>
+    </div>
+    <section>
+      <h2 class="text-xl font-semibold mb-2" id="contact-title">Связь и присутствие</h2>
+      <div class="grid sm:grid-cols-2 gap-4 text-base text-white/80">
+        <div class="space-y-2">
+          <p><a href="https://t.me/MrJinPro" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram" width="20" style="display:inline;margin-right:6px;vertical-align:middle;filter:invert(100%);"> @MrJinPro</a></p>
+          <p><a href="mailto:dev@mrjin.pro"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/2709.svg" alt="Email" width="20" style="display:inline;margin-right:6px;vertical-align:middle;"> dev@mrjin.pro</a></p>
+        </div>
+        <div class="space-y-2">
+          <p><a href="https://github.com/MrJinPro" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="20" style="display:inline;margin-right:6px;vertical-align:middle;"> github.com/MrJinPro</a></p>
+          <p><a href="https://mrjin.pro" target="_blank"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f310.svg" alt="Website" width="20" style="display:inline;margin-right:6px;vertical-align:middle;"> mrjin.pro</a></p>
+        </div>
+      </div>
+    </section>
+    <footer class="text-center text-white/40 text-sm border-t border-white/10 pt-6">
+      © 2025 MrJinPro — <span id="footer-slogan">Кодируй. Модифицируй. Влияй.</span>
+    </footer>
+  </main>
+  <script>
+    // ... (all existing script content unchanged until line before toggleLang)
+
+    let lang = 'ru';
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const footerSlogan = document.getElementById('footer-slogan');
+      if (footerSlogan) {
+        footerSlogan.innerText = 'Кодируй. Модифицируй. Влияй.';
+      }
+    });
+
+    function toggleLang() {
+      const desc = document.getElementById('desc');
+      const sectionTitles = document.querySelectorAll('section h2');
+      const lists = document.querySelectorAll('section ul');
+      const contactTitle = document.getElementById('contact-title');
+      const footerSlogan = document.getElementById('footer-slogan');
+
+      if (!desc || sectionTitles.length < 2 || lists.length < 2 || !contactTitle || !footerSlogan) return;
+
+      if (lang === 'ru') {
+        desc.innerText = 'Architect of the digital future. Exploring neural networks, creating AI tools, automating reality. Blending aesthetics, algorithms, and innovation.';
+        sectionTitles[0].innerText = 'Key Areas';
+        sectionTitles[1].innerText = 'Current Research';
+        lists[0].innerHTML = `
+          <li>Python, TypeScript, C</li>
+          <li>AI and neural networks in products</li>
+          <li>Reactive UI and future design</li>
+          <li>Automation and DevOps approach</li>`;
+        lists[1].innerHTML = `
+          <li>Software architecture and scalability</li>
+          <li>Modular AI systems and autogeneration</li>
+          <li>CI/CD in microservice environments</li>`;
+        contactTitle.innerText = 'Contacts and Presence';
+        footerSlogan.innerText = 'Code. Modify. Influence.';
+        lang = 'en';
+      } else {
+        desc.innerText = 'Архитектор цифрового будущего. Исследую нейросети, создаю ИИ-инструменты, автоматизирую реальность. Сочетаю эстетику, алгоритмы и инновации.';
+        sectionTitles[0].innerText = 'Ключевые направления';
+        sectionTitles[1].innerText = 'Текущие исследования';
+        lists[0].innerHTML = `
+          <li>Python, TypeScript, C</li>
+          <li>AI и нейросети в продуктах</li>
+          <li>Реактивные UI и дизайн будущего</li>
+          <li>Автоматизация и DevOps-подход</li>`;
+        lists[1].innerHTML = `
+          <li>Архитектура ПО и масштабируемость</li>
+          <li>Модульные ИИ-системы и автогенерация</li>
+          <li>CI/CD-процессы в микросервисной среде</li>`;
+        contactTitle.innerText = 'Связь и присутствие';
+        footerSlogan.innerText = 'Кодируй. Модифицируй. Влияй.';
+        lang = 'ru';
+      }
+    }
+  </script>
+<script>
+  AOS.init();
+  VANTA.NET({
+    el: "#bg-vanta",
+    mouseControls: true,
+    touchControls: true,
+    color: 0x1111ff,
+    backgroundColor: 0x0f172a
+  });
+
+  const canvas = document.getElementById('sparkle');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('mousemove', e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    for (let i = 0; i < 5; i++) {
+      particles.push({
+        x: mouse.x,
+        y: mouse.y,
+        alpha: 1,
+        radius: Math.random() * 4 + 2,
+        dx: (Math.random() - 0.5) * 2,
+        dy: (Math.random() - 0.5) * 2
+      });
+    }
+  });
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.x += p.dx;
+      p.y += p.dy;
+      p.alpha -= 0.02;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 215, 0, ${p.alpha})`;
+      ctx.shadowColor = 'gold';
+      ctx.shadowBlur = 10;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+    particles = particles.filter(p => p.alpha > 0);
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  
+
+  
+</script>
+<div id="code-rain" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:hidden;font-family:monospace;font-size:14px;opacity:0.08;line-height:1.4;color:#00ff00;white-space:pre;animation:scroll-code 20s linear infinite;"></div>
+<style>
+@keyframes scroll-code {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+</style>
+<script>
+  const codeSamples = [
+  `// AI module initializing...
+const ai = new NeuralCore();
+ai.learn(patterns);
+if (ai.ready()) ai.run();`,
+  `fetch('/api/data')
+  .then(res => res.json())
+  .then(data => render(data));`,
+  `function render(data) {
+  console.log('%cRendering smart logic', 'color:lime');
+  UI.update(data);
+}`,
+  `// Powered by MrJinPro`,
+  `// DevOps CI/CD pipeline
+git push origin main
+docker build .
+docker-compose up -d`,
+  `// Neural Network
+input => [dense, relu, dropout] => output`
+];
+  const rain = document.getElementById('code-rain');
+  for (let i = 0; i < 30; i++) {
+  const line = document.createElement('div');
+  const sample = codeSamples[Math.floor(Math.random() * codeSamples.length)];
+  line.textContent = sample;
+  line.style.position = 'absolute';
+  line.style.left = `${Math.random() * window.innerWidth * 0.8}px`;
+  line.style.top = `${Math.random() * 200 - 100}%`;
+  line.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
+  line.style.animation = `scroll-code ${10 + Math.random() * 20}s linear infinite`;
+  rain.appendChild(line);
+  }
+</script>
+</body>
+</html>
