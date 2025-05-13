@@ -105,6 +105,15 @@
 </head>
 <body>
   <div id="bg-vanta"></div>
+
+  <audio id="bg-music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/14/audio_7e83591704.mp3?filename=cyber-city-12472.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="document.getElementById('bg-music').play()" style="position:fixed;bottom:20px;left:20px;z-index:1000;padding:6px 12px;border-radius:8px;background:#fff2;color:#0ff;">
+  ▶ Включить музыку
+</button>
+  
   <button class="theme-toggle" onclick="document.body.classList.toggle('invert')">🌓</button>
   <button class="lang-toggle" onclick="toggleLang()">🌐</button>
   <canvas class="particles" id="sparkle"></canvas>
