@@ -152,36 +152,36 @@
       </div>
     </section>
     <section data-aos="fade-up">
-  <h2 class="text-xl font-semibold mb-4">Проекты</h2>
+  <h2 class="text-xl font-semibold mb-4" id="projects-title">Проекты</h2>
   <div class="grid md:grid-cols-2 gap-6">
 
     <!-- Предсказатель Рулетки -->
     <a href="https://rp5rp.mrjin.pro/" target="_blank" class="block bg-white/5 border border-white/10 rounded-xl p-4 hover:scale-[1.015] transition transform duration-300">
       <img src="/rp5rp_main.png" alt="Предсказатель Рулетки" class="w-full h-40 object-cover rounded-lg mb-3">
-      <h3 class="text-lg font-bold text-white mb-1">Предсказатель Рулетки</h3>
-      <p class="text-white/80 text-sm">AI-инструмент для анализа выпадений чисел в казино GTA5 RP. Мобильный UI, Telegram-бот, разные модели предсказаний.</p>
+      <h3 class="text-lg font-bold text-white mb-1" id="project1-title">Предсказатель Рулетки</h3>
+      <p class="text-white/80 text-sm" id="project1-desc">AI-инструмент для анализа выпадений чисел в казино GTA5 RP. Мобильный UI, Telegram-бот, разные модели предсказаний.</p>
     </a>
 
     <!-- GhostHub Bot -->
     <a href="https://ghost.mrjin.pro/" target="_blank" class="block bg-white/5 border border-white/10 rounded-xl p-4 hover:scale-[1.015] transition transform duration-300">
       <img src="/ghosthub_main.png" alt="GhostHub Bot" class="w-full h-40 object-cover rounded-lg mb-3">
-      <h3 class="text-lg font-bold text-white mb-1">GhostHub Bot</h3>
-      <p class="text-white/80 text-sm">18 модулей для автоматизации GTA5 RP: Колесо, Качалка, Лотерея, Анти-АФК. Подписки, GUI, антидетект.</p>
+      <h3 class="text-lg font-bold text-white mb-1" id="project2-title">GhostHub Bot</h3>
+      <p class="text-white/80 text-sm" id="project2-desc">18 модулей для автоматизации GTA5 RP: Колесо, Качалка, Лотерея, Анти-АФК. Подписки, GUI, антидетект.</p>
     </a>
 
     <!-- Смена 1.0 -->
     <a href="https://smena.mrjin.pro/" target="_blank" class="block bg-white/5 border border-white/10 rounded-xl p-4 hover:scale-[1.015] transition transform duration-300">
       <img src="/smena_main.png" alt="Смена 1.0" class="w-full h-40 object-cover rounded-lg mb-3">
-      <h3 class="text-lg font-bold text-white mb-1">Смена 1.0</h3>
-      <p class="text-white/80 text-sm">Пультовое ПО для охранных агентств: тревоги, фильтрация, обзвон клиентов, база данных, стабильный AMI-мониторинг.</p>
+      <h3 class="text-lg font-bold text-white mb-1" id="project3-title">Смена 1.0</h3>
+      <p class="text-white/80 text-sm" id="project3-desc">Пультовое ПО для охранных агентств: тревоги, фильтрация, обзвон клиентов, база данных, стабильный AMI-мониторинг.</p>
     </a>
 
-    <!-- Добрыня -->
-    <a href="https://dobrai.app/" target="_blank" class="block bg-white/5 border border-white/10 rounded-xl p-4 hover:scale-[1.015] transition transform duration-300">
-      <img src="/dobrynia_main.png" alt="Добрыня AI" class="w-full h-40 object-cover rounded-lg mb-3">
-      <h3 class="text-lg font-bold text-white mb-1">Добрыня (в разработке)</h3>
-      <p class="text-white/80 text-sm">ИИ-ассистент нового поколения для охранных систем. Автосценарии, маршруты ГБР, голос, аналитика и управление тревогами.</p>
-    </a>
+    <!-- CS Hub -->
+    <div class="block bg-white/5 border border-white/10 rounded-xl p-4">
+      <img src="/logo_cs.png" alt="CS Hub" class="w-full h-40 object-cover rounded-lg mb-3">
+      <h3 class="text-lg font-bold text-white mb-1" id="project4-title">CS Hub (Центр связи)</h3>
+      <p class="text-white/80 text-sm" id="project4-desc">Комплексная система мониторинга и управления для охранных служб. Включает современный веб-интерфейс с реактивным дизайном, микросервисную архитектуру, интеграцию с популярными мессенджерами и панель управления персоналом.</p>
+    </div>
 
   </div>
 </section>
@@ -207,7 +207,18 @@
       const sectionTitles = document.querySelectorAll('section h2');
       const lists = document.querySelectorAll('section ul');
       const contactTitle = document.getElementById('contact-title');
+      const projectsTitle = document.getElementById('projects-title');
       const footerSlogan = document.getElementById('footer-slogan');
+      
+      // Проекты
+      const project1Title = document.getElementById('project1-title');
+      const project1Desc = document.getElementById('project1-desc');
+      const project2Title = document.getElementById('project2-title');
+      const project2Desc = document.getElementById('project2-desc');
+      const project3Title = document.getElementById('project3-title');
+      const project3Desc = document.getElementById('project3-desc');
+      const project4Title = document.getElementById('project4-title');
+      const project4Desc = document.getElementById('project4-desc');
 
       if (!desc || sectionTitles.length < 2 || lists.length < 2 || !contactTitle || !footerSlogan) return;
 
@@ -225,6 +236,18 @@
           <li>Modular AI systems and autogeneration</li>
           <li>CI/CD in microservice environments</li>`;
         contactTitle.innerText = 'Contacts and Presence';
+        projectsTitle.innerText = 'Projects';
+        
+        // Переводы проектов на английский
+        if (project1Title) project1Title.innerText = 'Roulette Predictor';
+        if (project1Desc) project1Desc.innerText = 'AI tool for analyzing number patterns in GTA5 RP casino. Mobile UI, Telegram bot, various prediction models.';
+        if (project2Title) project2Title.innerText = 'GhostHub Bot';
+        if (project2Desc) project2Desc.innerText = '18 modules for GTA5 RP automation: Wheel, Gym, Lottery, Anti-AFK. Subscriptions, GUI, anti-detection.';
+        if (project3Title) project3Title.innerText = 'Shift 1.0';
+        if (project3Desc) project3Desc.innerText = 'Control room software for security agencies: alarms, filtering, client calling, database, stable AMI monitoring.';
+        if (project4Title) project4Title.innerText = 'CS Hub (Communication Center)';
+        if (project4Desc) project4Desc.innerText = 'Comprehensive monitoring and management system for security services. Features modern web interface with reactive design, microservice architecture, popular messenger integration and staff management panel.';
+        
         footerSlogan.innerText = 'Code. Modify. Influence.';
         lang = 'en';
       } else {
@@ -241,6 +264,18 @@
           <li>Модульные ИИ-системы и автогенерация</li>
           <li>CI/CD-процессы в микросервисной среде</li>`;
         contactTitle.innerText = 'Связь и присутствие';
+        projectsTitle.innerText = 'Проекты';
+        
+        // Возврат на русский
+        if (project1Title) project1Title.innerText = 'Предсказатель Рулетки';
+        if (project1Desc) project1Desc.innerText = 'AI-инструмент для анализа выпадений чисел в казино GTA5 RP. Мобильный UI, Telegram-бот, разные модели предсказаний.';
+        if (project2Title) project2Title.innerText = 'GhostHub Bot';
+        if (project2Desc) project2Desc.innerText = '18 модулей для автоматизации GTA5 RP: Колесо, Качалка, Лотерея, Анти-АФК. Подписки, GUI, антидетект.';
+        if (project3Title) project3Title.innerText = 'Смена 1.0';
+        if (project3Desc) project3Desc.innerText = 'Пультовое ПО для охранных агентств: тревоги, фильтрация, обзвон клиентов, база данных, стабильный AMI-мониторинг.';
+        if (project4Title) project4Title.innerText = 'CS Hub (Центр связи)';
+        if (project4Desc) project4Desc.innerText = 'Комплексная система мониторинга и управления для охранных служб. Включает современный веб-интерфейс с реактивным дизайном, микросервисную архитектуру, интеграцию с популярными мессенджерами и панель управления персоналом.';
+        
         footerSlogan.innerText = 'Кодируй. Модифицируй. Влияй.';
         lang = 'ru';
       }
